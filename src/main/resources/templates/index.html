@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form</title>
+    <link href="css/style.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+	 <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+            </div>
+    <div class="container mt-5">
+        <h1>Contact Us</h1>
+
+        <div th:if="${param.success}">
+            <p class="alert alert-success">Form submitted successfully!</p>
+        </div>
+
+        <form th:object="${contactForm}" th:action="@{/submit}" method="post">
+            <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name *" value="" />
+                        </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control"placeholder="Your email *" name="email"  required />
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" name="message" placeholder="Your msg *" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
